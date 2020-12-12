@@ -21,7 +21,30 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    Recipe.create({
+      title: "Pizza 3 fromage",
+      level: "Amateur Chef",
+      cuisine: "Italian",
+      dishType: "main_course",
+      ingredient: ['mozzarella', 'comté', 'gorgonzola'],
+      image:
+          "https://assets.afcdn.com/recipe/20160926/5624_w600.jpg",
+      duration: 20,
+      creator: "Mama Primi",
+    })
+    .then((recipe) => {
+    console.log(recipe.title);
+
+    Recipe.insertMany(data);
+    data.forEach((element) => {
+      console.log(element.title)
+    })
   })
+
+  Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese" },
+  )
+})
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
